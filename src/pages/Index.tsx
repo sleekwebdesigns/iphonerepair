@@ -2,6 +2,7 @@ import { Smartphone, Laptop, Tablet, Clock, DollarSign, Award, MapPin, Phone, Na
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BookingWidget from "@/components/BookingWidget";
+import DeviceRepairsWidget from "@/components/DeviceRepairsWidget";
 import TicketForms from "@/components/TicketForms";
 
 const Index = () => {
@@ -187,33 +188,7 @@ const Index = () => {
       <BookingWidget />
 
       {/* Device Repairs Widget */}
-      <section className="py-16 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-            Device Repair Options
-          </h2>
-          <div className="max-w-4xl mx-auto">
-            <style type='text/css'>{`
-              .rs-widget-container {
-                position: relative;
-                padding-bottom: 56.25%;
-                padding-top: 35px;
-                height: 100%;
-              }
-              .rs-widget-container iframe {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-              }
-            `}</style>
-            <div className='rs-widget-container'>
-              <script src='https://wefixitcrm.flm380.com/device_repairs/includr.js?height=800&scrolling=no'></script>
-            </div>
-          </div>
-        </div>
-      </section>
+      <DeviceRepairsWidget />
 
       {/* Ticket Forms */}
       <TicketForms />

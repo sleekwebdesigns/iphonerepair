@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
 
-const BookingWidget = () => {
+const DeviceRepairsWidget = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = 'https://wefixitcrm.flm380.com/bookings/includr.js?scrolling=no&height=800';
+    script.src = 'https://wefixitcrm.flm380.com/device_repairs/includr.js?height=800&scrolling=no';
     script.async = true;
 
     if (containerRef.current) {
@@ -23,7 +23,7 @@ const BookingWidget = () => {
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-          Book Your Repair or Check Prices
+          Device Repair Options
         </h2>
 
         <style>
@@ -44,10 +44,10 @@ const BookingWidget = () => {
           `}
         </style>
 
-        <div className="rs-widget-container max-w-5xl mx-auto" ref={containerRef} />
+        <div className="rs-widget-container max-w-4xl mx-auto" ref={containerRef} />
       </div>
     </section>
   );
 };
 
-export default BookingWidget;
+export default DeviceRepairsWidget;
