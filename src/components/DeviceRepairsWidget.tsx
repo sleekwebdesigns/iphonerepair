@@ -1,15 +1,35 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 const DeviceRepairsWidget = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    console.log('[DeviceRepairsWidget] Starting to load script...');
+    
     const script = document.createElement('script');
     script.src = 'https://wefixitcrm.flm380.com/device_repairs/includr.js?height=800&scrolling=no';
     script.async = true;
 
+    script.onload = () => {
+      console.log('[DeviceRepairsWidget] Script loaded successfully');
+      setLoading(false);
+    };
+
+    script.onerror = (err) => {
+      console.error('[DeviceRepairsWidget] Script failed to load:', err);
+      setError('Failed to load device repair widget. Please try again or call us at 347-450-7344.');
+      setLoading(false);
+    };
+
     if (containerRef.current) {
+      console.log('[DeviceRepairsWidget] Container found, appending script');
       containerRef.current.appendChild(script);
+    } else {
+      console.error('[DeviceRepairsWidget] Container ref is null');
+      setError('Widget container not found.');
+      setLoading(false);
     }
 
     return () => {
@@ -52,7 +72,25 @@ const DeviceRepairsWidget = () => {
           `}
         </style>
 
-        <div className="rs-widget-container max-w-4xl mx-auto" ref={containerRef} />
+        {loading && (
+          <div className="text-center py-12 text-muted-foreground">
+            <p className="text-lg">Loading device repair widget...</p>
+            <p className="text-sm mt-2">This may take a few moments</p>
+          </div>
+        )}
+
+        {error && (
+          <div className="max-w-2xl mx-auto bg-destructive/10 border border-destructive/20 rounded-lg p-6 text-center">
+            <p className="text-destructive font-medium mb-2">Widget Loading Error</p>
+            <p className="text-sm text-muted-foreground">{error}</p>
+          </div>
+        )}
+
+        <div 
+          id="rs-widget-device-repairs-container"
+          className="rs-widget-container max-w-4xl mx-auto" 
+          ref={containerRef} 
+        />
       </div>
     </section>
   );

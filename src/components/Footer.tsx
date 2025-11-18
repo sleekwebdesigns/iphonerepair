@@ -12,7 +12,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-2">
             <p className="text-sm font-medium text-foreground">
-              © 2024 FLM 380 Wireless
+              © 2026 FLM 380 Wireless
             </p>
             <p className="text-sm text-muted-foreground">
               iPhone, Computer & Device Repair in Brooklyn
