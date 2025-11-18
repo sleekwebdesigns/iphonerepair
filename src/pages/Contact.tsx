@@ -3,6 +3,7 @@ import { Phone, MapPin, Clock, Mail } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
+import { BUSINESS_INFO } from "@/lib/businessInfo";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -61,11 +62,11 @@ const Contact = () => {
                       <div>
                         <h3 className="font-semibold mb-1">Location</h3>
                         <p className="text-muted-foreground">
-                          232 Rogers Ave<br />
-                          Brooklyn, NY 11225
+                          {BUSINESS_INFO.address.street}<br />
+                          {BUSINESS_INFO.address.city}, {BUSINESS_INFO.address.state} {BUSINESS_INFO.address.zipCode}
                         </p>
                         <a
-                          href="https://www.google.com/maps/dir//232+Rogers+Ave,+Brooklyn,+NY+11225"
+                          href={BUSINESS_INFO.googleMapsUrl}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-primary hover:text-primary-dark text-sm font-medium mt-2 inline-block"
@@ -82,10 +83,10 @@ const Contact = () => {
                       <div>
                         <h3 className="font-semibold mb-1">Phone</h3>
                         <a
-                          href="tel:13474507344"
+                          href={`tel:${BUSINESS_INFO.phoneTel}`}
                           className="text-primary hover:text-primary-dark font-medium"
                         >
-                          347-450-7344
+                          {BUSINESS_INFO.phone}
                         </a>
                       </div>
                     </div>
@@ -97,8 +98,8 @@ const Contact = () => {
                       <div>
                         <h3 className="font-semibold mb-2">Hours</h3>
                         <div className="text-muted-foreground space-y-1">
-                          <p>Monday – Saturday: 10 AM – 7 PM</p>
-                          <p>Sunday: 11 AM – 5 PM</p>
+                          <p>Monday – Saturday: {BUSINESS_INFO.hours.monday}</p>
+                          <p>Sunday: {BUSINESS_INFO.hours.sunday}</p>
                         </div>
                       </div>
                     </div>
@@ -108,7 +109,7 @@ const Contact = () => {
                 {/* Map */}
                 <div className="rounded-xl overflow-hidden border border-border shadow-sm">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96850.73182238804!2d-74.01983917296918!3d40.661069455030045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25c9b16f34c23%3A0x4a4dd8b30d31f99e!2sFLM%20380%20WIRELESS!5e0!3m2!1sen!2sus!4v1763443221813!5m2!1sen!2sus"
+                    src={BUSINESS_INFO.googleMapsEmbed}
                     width="100%"
                     height="300"
                     style={{ border: 0 }}
