@@ -1,40 +1,64 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const BookingWidget = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const [blobUrl, setBlobUrl] = useState<string>('');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log('[BookingWidget] Starting to load script...');
+    console.log('[BookingWidget] Creating iframe with blob HTML wrapper...');
     
-    const script = document.createElement('script');
-    script.src = 'https://wefixitcrm.flm380.com/bookings/includr.js?scrolling=no&height=800';
-    script.async = true;
+    const embedHTML = `
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type='text/css'>
+    body { 
+      margin: 0; 
+      padding: 0; 
+      overflow: hidden; 
+    }
+    .rs-widget-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 35px;
+      height: 100%;
+    }
+    .rs-widget-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <div class='rs-widget-container'>
+    <script src='https://wefixitcrm.flm380.com/bookings/includr.js?scrolling=no&height=800'></script>
+  </div>
+</body>
+</html>
+`;
 
-    script.onload = () => {
-      console.log('[BookingWidget] Script loaded successfully');
+    try {
+      const blob = new Blob([embedHTML], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      setBlobUrl(url);
+      console.log('[BookingWidget] Blob URL created successfully');
       setLoading(false);
-    };
-
-    script.onerror = (err) => {
-      console.error('[BookingWidget] Script failed to load:', err);
-      setError('Failed to load booking widget. Please try again or call us at 347-450-7344.');
-      setLoading(false);
-    };
-
-    if (containerRef.current) {
-      console.log('[BookingWidget] Container found, appending script');
-      containerRef.current.appendChild(script);
-    } else {
-      console.error('[BookingWidget] Container ref is null');
-      setError('Widget container not found.');
+    } catch (err) {
+      console.error('[BookingWidget] Failed to create blob:', err);
+      setError('Failed to initialize booking widget. Please try again or call us at 347-450-7344.');
       setLoading(false);
     }
 
     return () => {
-      if (containerRef.current?.contains(script)) {
-        containerRef.current.removeChild(script);
+      if (blobUrl) {
+        URL.revokeObjectURL(blobUrl);
       }
     };
   }, []);
@@ -45,32 +69,6 @@ const BookingWidget = () => {
         <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
           Book Your Repair or Check Prices
         </h2>
-
-        <style>
-          {`
-            .rs-widget-container {
-              position: relative;
-              width: 100%;
-              height: 1200px; /* SAFE HEIGHT FOR ALL WIDGETS */
-              overflow: hidden;
-            }
-
-            @media (max-width: 768px) {
-              .rs-widget-container {
-                height: 1500px; /* MOBILE FIX */
-              }
-            }
-
-            .rs-widget-container iframe {
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              border: none;
-            }
-          `}
-        </style>
 
         {loading && (
           <div className="text-center py-12 text-muted-foreground">
@@ -86,11 +84,20 @@ const BookingWidget = () => {
           </div>
         )}
 
-        <div 
-          id="rs-widget-booking-container"
-          className="rs-widget-container max-w-5xl mx-auto" 
-          ref={containerRef} 
-        />
+        {blobUrl && !error && (
+          <div className="max-w-5xl mx-auto">
+            <iframe
+              src={blobUrl}
+              style={{
+                width: '100%',
+                height: '1200px',
+                border: 'none'
+              }}
+              title="Booking Widget"
+              onLoad={() => console.log('[BookingWidget] Iframe loaded')}
+            />
+          </div>
+        )}
       </div>
     </section>
   );
