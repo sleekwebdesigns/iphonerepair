@@ -108,7 +108,7 @@ const Contact = () => {
                 {/* Map */}
                 <div className="rounded-xl overflow-hidden border border-border shadow-sm">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.3847662948524!2d-73.95343968459384!3d40.662688179339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b7e2e6e4f5d%3A0x5e3e9b6e8e7e8e8e!2s232%20Rogers%20Ave%2C%20Brooklyn%2C%20NY%2011225!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96850.73182238804!2d-74.01983917296918!3d40.661069455030045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25c9b16f34c23%3A0x4a4dd8b30d31f99e!2sFLM%20380%20WIRELESS!5e0!3m2!1sen!2sus!4v1763443221813!5m2!1sen!2sus"
                     width="100%"
                     height="300"
                     style={{ border: 0 }}
