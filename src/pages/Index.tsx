@@ -186,6 +186,35 @@ const Index = () => {
       {/* Booking Widget */}
       <BookingWidget />
 
+      {/* Device Repairs Widget */}
+      <section className="py-16 bg-background">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+            Device Repair Options
+          </h2>
+          <div className="max-w-4xl mx-auto">
+            <style type='text/css'>{`
+              .rs-widget-container {
+                position: relative;
+                padding-bottom: 56.25%;
+                padding-top: 35px;
+                height: 100%;
+              }
+              .rs-widget-container iframe {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+              }
+            `}</style>
+            <div className='rs-widget-container'>
+              <script src='https://wefixitcrm.flm380.com/device_repairs/includr.js?height=800&scrolling=no'></script>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Ticket Forms */}
       <TicketForms />
 
@@ -314,7 +343,7 @@ const Index = () => {
             {/* Map Embed */}
             <div className="rounded-xl overflow-hidden border border-border shadow-sm">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3026.3847662948524!2d-73.95343968459384!3d40.662688179339!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25b7e2e6e4f5d%3A0x5e3e9b6e8e7e8e8e!2s232%20Rogers%20Ave%2C%20Brooklyn%2C%20NY%2011225!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96850.73182238804!2d-74.01983917296918!3d40.661069455030045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25c9b16f34c23%3A0x4a4dd8b30d31f99e!2sFLM%20380%20WIRELESS!5e0!3m2!1sen!2sus!4v1763443221813!5m2!1sen!2sus"
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
