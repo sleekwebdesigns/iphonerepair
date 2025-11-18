@@ -13,17 +13,23 @@ const DeviceRepairsWidget = () => {
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <style type='text/css'>
-    body { 
-      margin: 0; 
-      padding: 0; 
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    html, body { 
+      width: 100%;
+      height: 100%;
       overflow: hidden; 
     }
     .rs-widget-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      padding-top: 35px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
       height: 100%;
     }
     .rs-widget-container iframe {
@@ -64,10 +70,10 @@ const DeviceRepairsWidget = () => {
   }, []);
 
   return (
-    <section className="py-16 bg-background">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
-          Device Repair Options
+    <section className="w-full bg-background">
+      <div className="w-full">
+        <h2 className="text-2xl md:text-3xl font-bold text-center py-6 bg-muted/30">
+          Repair Starts Here
         </h2>
 
         {loading && (
@@ -78,19 +84,20 @@ const DeviceRepairsWidget = () => {
         )}
 
         {error && (
-          <div className="max-w-2xl mx-auto bg-destructive/10 border border-destructive/20 rounded-lg p-6 text-center">
+          <div className="max-w-2xl mx-auto bg-destructive/10 border border-destructive/20 rounded-lg p-6 text-center m-4">
             <p className="text-destructive font-medium mb-2">Widget Loading Error</p>
             <p className="text-sm text-muted-foreground">{error}</p>
           </div>
         )}
 
         {blobUrl && !error && (
-          <div className="max-w-4xl mx-auto">
+          <div className="w-full">
             <iframe
               src={blobUrl}
               style={{
                 width: '100%',
-                height: '1200px',
+                height: 'calc(100vh - 140px)',
+                minHeight: '800px',
                 border: 'none'
               }}
               title="Device Repairs Widget"

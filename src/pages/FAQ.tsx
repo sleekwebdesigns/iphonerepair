@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import FAQStructuredData from "@/components/FAQStructuredData";
 import {
   Accordion,
   AccordionContent,
@@ -135,6 +136,7 @@ const FAQ = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <FAQStructuredData />
       <Header />
 
       <main className="py-16">

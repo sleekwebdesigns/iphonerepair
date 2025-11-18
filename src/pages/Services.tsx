@@ -30,6 +30,7 @@ const Services = () => {
                   <p className="text-muted-foreground">Fast, reliable iPhone repair services</p>
                 </div>
               </div>
+              <h3 className="text-xl font-semibold mb-4">Common iPhone Repairs</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-start gap-2">
@@ -73,6 +74,7 @@ const Services = () => {
                   <p className="text-muted-foreground">Expert Android device repairs</p>
                 </div>
               </div>
+              <h3 className="text-xl font-semibold mb-4">Android Repair Services</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-start gap-2">
@@ -108,6 +110,7 @@ const Services = () => {
                   <p className="text-muted-foreground">Professional tablet repair services</p>
                 </div>
               </div>
+              <h3 className="text-xl font-semibold mb-4">Tablet Repair Services</h3>
               <ul className="space-y-3 text-muted-foreground">
                 <li className="flex items-start gap-2">
                   <Wrench className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
@@ -135,6 +138,7 @@ const Services = () => {
                   <p className="text-muted-foreground">Mac and PC repair specialists</p>
                 </div>
               </div>
+              <h3 className="text-xl font-semibold mb-4">Computer & Laptop Services</h3>
               <div className="grid sm:grid-cols-2 gap-4">
                 <ul className="space-y-3 text-muted-foreground">
                   <li className="flex items-start gap-2">

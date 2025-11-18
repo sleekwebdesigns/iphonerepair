@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import logo from "@/assets/Final-Logo-copy.png";
+import { BUSINESS_INFO } from "@/lib/businessInfo";
 
 const Footer = () => {
   return (
@@ -12,13 +13,13 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-2">
             <p className="text-sm font-medium text-foreground">
-              © 2026 FLM 380 Wireless
+              © 2026 {BUSINESS_INFO.name}
             </p>
             <p className="text-sm text-muted-foreground">
-              iPhone, Computer & Device Repair in Brooklyn
+              {BUSINESS_INFO.description}
             </p>
             <p className="text-sm text-muted-foreground">
-              232 Rogers Ave, Brooklyn, NY 11225 · 347-450-7344
+              {BUSINESS_INFO.address.fullAddress} · {BUSINESS_INFO.phone}
             </p>
           </div>
 

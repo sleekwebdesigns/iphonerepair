@@ -3,10 +3,13 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TicketForms from "@/components/TicketForms";
+import StructuredData from "@/components/StructuredData";
+import { BUSINESS_INFO } from "@/lib/businessInfo";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      <StructuredData />
       <Header />
 
       {/* Hero Section */}
@@ -19,28 +22,31 @@ const Index = () => {
             <p className="text-xl md:text-2xl text-muted-foreground mb-8">
               Same-day repairs for phones, tablets, laptops and more.
             </p>
+            <p className="text-lg text-muted-foreground mb-6">
+              Serving Crown Heights, Prospect Heights, Park Slope, Flatbush, and all of Brooklyn
+            </p>
 
             {/* NAP Block */}
             <div className="bg-card border border-border rounded-xl p-6 mb-8 inline-block">
-              <p className="font-bold text-lg mb-2">FLM 380 Wireless</p>
-              <p className="text-muted-foreground mb-2">232 Rogers Ave, Brooklyn, NY 11225</p>
-              <a href="tel:13474507344" className="text-primary font-semibold text-xl hover:text-primary-dark flex items-center justify-center gap-2">
+              <p className="font-bold text-lg mb-2">{BUSINESS_INFO.name}</p>
+              <p className="text-muted-foreground mb-2">{BUSINESS_INFO.address.fullAddress}</p>
+              <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="text-primary font-semibold text-xl hover:text-primary-dark flex items-center justify-center gap-2">
                 <Phone className="h-5 w-5" />
-                347-450-7344
+                {BUSINESS_INFO.phone}
               </a>
             </div>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
-                href="tel:13474507344"
+                href={`tel:${BUSINESS_INFO.phoneTel}`}
                 className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary-dark transition-colors"
               >
                 <Phone className="h-5 w-5" />
                 Call Now
               </a>
               <a
-                href="https://www.google.com/maps/dir//232+Rogers+Ave,+Brooklyn,+NY+11225"
+                href={BUSINESS_INFO.googleMapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2 bg-card border-2 border-primary text-primary px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary hover:text-primary-foreground transition-colors"
@@ -303,22 +309,22 @@ const Index = () => {
                 <div>
                   <h3 className="font-bold text-lg mb-4">Location</h3>
                   <p className="text-muted-foreground mb-4">
-                    232 Rogers Ave<br />
-                    Brooklyn, NY 11225
+                    {BUSINESS_INFO.address.street}<br />
+                    {BUSINESS_INFO.address.city}, {BUSINESS_INFO.address.state} {BUSINESS_INFO.address.zipCode}
                   </p>
                   <p className="font-semibold text-primary mb-2">
-                    <a href="tel:13474507344" className="hover:text-primary-dark">347-450-7344</a>
+                    <a href={`tel:${BUSINESS_INFO.phoneTel}`} className="hover:text-primary-dark">{BUSINESS_INFO.phone}</a>
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    We serve Crown Heights, Prospect Lefferts Gardens, Flatbush, and nearby areas.
+                    We serve {BUSINESS_INFO.serviceArea.slice(0, 3).join(', ')}, and nearby areas.
                   </p>
                 </div>
 
                 <div>
                   <h3 className="font-bold text-lg mb-4">Hours</h3>
                   <div className="space-y-2 text-muted-foreground">
-                    <p>Mon–Sat: 10 AM – 7 PM</p>
-                    <p>Sun: 11 AM – 5 PM</p>
+                    <p>Mon–Sat: {BUSINESS_INFO.hours.monday}</p>
+                    <p>Sun: {BUSINESS_INFO.hours.sunday}</p>
                   </div>
                 </div>
               </div>
@@ -327,7 +333,7 @@ const Index = () => {
             {/* Map Embed */}
             <div className="rounded-xl overflow-hidden border border-border shadow-sm">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d96850.73182238804!2d-74.01983917296918!3d40.661069455030045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25c9b16f34c23%3A0x4a4dd8b30d31f99e!2sFLM%20380%20WIRELESS!5e0!3m2!1sen!2sus!4v1763443221813!5m2!1sen!2sus"
+                src={BUSINESS_INFO.googleMapsEmbed}
                 width="100%"
                 height="400"
                 style={{ border: 0 }}
