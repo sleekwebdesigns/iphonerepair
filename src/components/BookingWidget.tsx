@@ -30,16 +30,24 @@ const BookingWidget = () => {
           {`
             .rs-widget-container {
               position: relative;
-              padding-bottom: 56.25%;
-              padding-top: 35px;
-              height: 100%;
+              width: 100%;
+              height: 1200px; /* SAFE HEIGHT FOR ALL WIDGETS */
+              overflow: hidden;
             }
+
+            @media (max-width: 768px) {
+              .rs-widget-container {
+                height: 1500px; /* MOBILE FIX */
+              }
+            }
+
             .rs-widget-container iframe {
               position: absolute;
               top: 0;
               left: 0;
               width: 100%;
               height: 100%;
+              border: none;
             }
           `}
         </style>
