@@ -1,8 +1,7 @@
 import { Smartphone, Laptop, Tablet, Clock, DollarSign, Award, MapPin, Phone, Navigation, Star } from "lucide-react";
+import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import BookingWidget from "@/components/BookingWidget";
-import DeviceRepairsWidget from "@/components/DeviceRepairsWidget";
 import TicketForms from "@/components/TicketForms";
 
 const Index = () => {
@@ -181,14 +180,24 @@ const Index = () => {
           <p className="text-center text-muted-foreground mt-8">
             Call <a href="tel:13474507344" className="text-primary font-semibold hover:text-primary-dark">347-450-7344</a> to check your device and get a quick quote.
           </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <Link
+              to="/book-repair"
+              className="inline-flex items-center justify-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-primary/90 transition-colors"
+            >
+              Book Your Appointment
+            </Link>
+            <Link
+              to="/device-repairs"
+              className="inline-flex items-center justify-center gap-2 bg-secondary text-secondary-foreground px-8 py-4 rounded-lg font-semibold text-lg hover:bg-secondary/80 transition-colors"
+            >
+              Check Device Repair Prices
+            </Link>
+          </div>
         </div>
       </section>
-
-      {/* Booking Widget */}
-      <BookingWidget />
-
-      {/* Device Repairs Widget */}
-      <DeviceRepairsWidget />
 
       {/* Ticket Forms */}
       <TicketForms />
