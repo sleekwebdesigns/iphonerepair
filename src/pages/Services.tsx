@@ -1,6 +1,7 @@
 import { Smartphone, Laptop, Tablet, Wrench } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { NavLink } from "@/components/NavLink";
 
 const Services = () => {
   return (
@@ -26,7 +27,11 @@ const Services = () => {
                   <Smartphone className="h-8 w-8 text-primary" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold">iPhone Repairs</h2>
+                  <h2 className="text-3xl font-bold">
+                    <NavLink to="/iphone-screen-repair-brooklyn" className="hover:text-primary transition-colors">
+                      iPhone Repairs
+                    </NavLink>
+                  </h2>
                   <p className="text-muted-foreground">Fast, reliable iPhone repair services</p>
                 </div>
               </div>
@@ -70,7 +75,11 @@ const Services = () => {
                   <Smartphone className="h-8 w-8 text-primary" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold">Samsung & Android Repairs</h2>
+                  <h2 className="text-3xl font-bold">
+                    <NavLink to="/samsung-repair-brooklyn" className="hover:text-primary transition-colors">
+                      Samsung & Android Repairs
+                    </NavLink>
+                  </h2>
                   <p className="text-muted-foreground">Expert Android device repairs</p>
                 </div>
               </div>
@@ -106,7 +115,11 @@ const Services = () => {
                   <Tablet className="h-8 w-8 text-primary" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold">iPad & Tablet Repairs</h2>
+                  <h2 className="text-3xl font-bold">
+                    <NavLink to="/ipad-repair-brooklyn" className="hover:text-primary transition-colors">
+                      iPad & Tablet Repairs
+                    </NavLink>
+                  </h2>
                   <p className="text-muted-foreground">Professional tablet repair services</p>
                 </div>
               </div>
@@ -134,7 +147,11 @@ const Services = () => {
                   <Laptop className="h-8 w-8 text-primary" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold">Computer & Laptop Repairs</h2>
+                  <h2 className="text-3xl font-bold">
+                    <NavLink to="/macbook-repair-brooklyn" className="hover:text-primary transition-colors">
+                      Computer & Laptop Repairs
+                    </NavLink>
+                  </h2>
                   <p className="text-muted-foreground">Mac and PC repair specialists</p>
                 </div>
               </div>
